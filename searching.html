@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching Algorithms</title>
+    <style>
+        /* Same styles as sorting.html */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 30px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ff9f43;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            color: #ff9f43;
+            font-size: 2rem;
+            margin-top: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .algorithm {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 5px solid #ff9f43;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .algorithm:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .algorithm p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        .algorithm ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .algorithm ul li {
+            list-style-type: disc;
+            margin-bottom: 5px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff9f43;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .back-button:hover {
+            background: #ff7f00;
+            transform: translateY(-2px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .algorithm p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container fade-in">
+        <h1>Searching Algorithms</h1>
+        
+        <div class="algorithm">
+            <h2>Linear Search</h2>
+            <p><strong>Best Case:</strong> O(1)</p>
+            <p><strong>Worst Case:</strong> O(n)</p>
+            <p>Linear Search is a simple searching algorithm that checks each element in the list sequentially until the target element is found.</p>
+        </div>
+
+        <div class="algorithm">
+            <h2>Binary Search</h2>
+            <p><strong>Best Case:</strong> O(1)</p>
+            <p><strong>Worst Case:</strong> O(log n)</p>
+            <p>Binary Search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing the search interval in half.</p>
+        </div>
+
+        <h2>Important DSA Questions for FAANG</h2>
+        <ul>
+            <li>Find the first and last position of an element in a sorted array.</li>
+            <li>Search in a rotated sorted array.</li>
+            <li>Find the minimum element in a rotated sorted array.</li>
+            <li>Implement a binary search algorithm.</li>
+        </ul>
+
+        <a href="index1.html" class="back-button">Back to Main Page</a>
+    </div>
+</body>
+</html>

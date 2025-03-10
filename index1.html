@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn DSA with RUBI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Curtain Opening Animation -->
+    <div id="curtain">
+        <div class="curtain-left"></div>
+        <div class="curtain-right"></div>
+        <div class="curtain-content">
+            <h1>Learn DSA with RUBI</h1>
+            <p class="motivational-quote">"Mastering Data Structures and Algorithms is the key to unlocking the world of programming."</p>
+            <button class="start-button" onclick="startApp()">Start Learning</button>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden Initially) -->
+    <div id="main-content" class="hidden">
+        <nav class="navbar">
+            <h1>Algorithm Visualizer</h1>
+            <button id="theme-toggle">🌙</button>
+        </nav>
+
+        <div class="container">
+            <!-- Grid Layout for Buttons, Leaderboard, and Code Execution -->
+            <div class="grid-container">
+                <!-- Left Column: Algorithm Buttons and Learn More Buttons -->
+                <div class="grid-item button-container">
+                    <h2>Select an Algorithm Category</h2>
+                    
+                    <!-- Learn More Buttons -->
+                    <h2>Learn More About Algorithms</h2>
+                    <button class="learn-more-btn" onclick="window.location.href='sorting.html'">Learn More About Sorting</button>
+                    <button class="learn-more-btn" onclick="window.location.href='searching.html'">Learn More About Searching</button>
+                    <button class="learn-more-btn" onclick="window.location.href='graph.html'">Learn More About Graph Algorithms</button>
+                    <button class="learn-more-btn" onclick="window.location.href='dp.html'">Learn More About Dynamic Programming</button>
+                    <button class="learn-more-btn" onclick="window.location.href='greedy.html'">Learn More About Greedy Algorithms</button>
+                    <button class="learn-more-btn" onclick="window.location.href='backtracking.html'">Learn More About Backtracking</button>
+                    <button class="learn-more-btn" onclick="window.location.href='tree.html'">Learn More About Tree Algorithms</button>
+                </div>
+
+                <!-- Middle Column: Leaderboard -->
+                <div class="grid-item leaderboard">
+                    <h2>Leaderboard</h2>
+                    <button class="clear-button" onclick="clearLeaderboard()">Clear Leaderboard</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Best Case</th>
+                                <th>Worst Case</th>
+                                <th>Execution Time</th>
+                                <th>Output</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <!-- Data will be inserted dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Right Column: Code Execution -->
+                <div class="grid-item code-executor">
+                    <h2>Test Your Code</h2>
+                    <label>Select Language:</label>
+                    <select id="language-select">
+                        <option value="50">C</option>
+                        <option value="54">C++</option>
+                        <option value="62">Java</option>
+                        <option value="71">Python</option>
+                    </select>
+
+                    <textarea id="code-input" rows="35" placeholder="Write your code here..." cols="50"></textarea>
+                    <button class="run-button" onclick="executeCode()">Run Code</button>
+                    <button class="reset-button" onclick="resetCode()">Reset Code</button>
+
+                    <h3>Output:</h3>
+                    <pre id="output-display" class="output-box">Waiting for execution...</pre>
+                </div>
+            </div>
+
+            <!-- Link to Algorithm Visualizer Section -->
+            <div class="button-container">
+                <button class="go-to-visualizer-btn" onclick="window.location.href='tree.html'">Go to Algorithm Visualizer</button>
+            </div>
+
+            <!-- Return to Home Page Button -->
+            <div class="button-container">
+                <button class="return-home-btn" onclick="window.location.href='#curtain'">Return to Home Page</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the transition between curtain and main content
+        setTimeout(() => {
+            document.getElementById('curtain').style.display = 'none'; // Hide curtain
+            document.getElementById('main-content').classList.remove('hidden'); // Show main content
+        }, 4000); // 4 seconds delay (2s for curtain animation + 2s for motivational quote)
+
+        // Leaderboard Data
+        let leaderboardData = [];
+
+        // Function to add data to the leaderboard
+        function addToLeaderboard(algorithm, bestCase, worstCase, executionTime, output) {
+            leaderboardData.push({ algorithm, bestCase, worstCase, executionTime, output });
+            updateLeaderboard();
+        }
+
+        // Function to update the leaderboard table
+        function updateLeaderboard() {
+            const leaderboardBody = document.getElementById('leaderboard-body');
+            leaderboardBody.innerHTML = ''; // Clear existing rows
+
+            leaderboardData.forEach((entry) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${entry.algorithm}</td>
+                    <td>${entry.bestCase}</td>
+                    <td>${entry.worstCase}</td>
+                    <td>${entry.executionTime} ms</td>
+                    <td>${entry.output}</td>
+                `;
+                leaderboardBody.appendChild(row);
+            });
+        }
+
+        // Function to clear the leaderboard
+        function clearLeaderboard() {
+            leaderboardData = []; // Clear the data
+            updateLeaderboard(); // Update the table
+        }
+
+        // Function to execute code (mock implementation)
+        function executeCode() {
+            const codeInput = document.getElementById('code-input').value;
+            const languageSelect = document.getElementById('language-select').value;
+            const outputDisplay = document.getElementById('output-display');
+
+            // Simulate code execution
+            const startTime = performance.now();
+            let output = '';
+            try {
+                // Mock execution logic
+                if (languageSelect === '71') { // Python
+                    output = eval(codeInput); // For demonstration only (not safe for production)
+                } else {
+                    output = 'Execution not supported for this language in the mock implementation.';
+                }
+            } catch (error) {
+                output = `Error: ${error.message}`;
+            }
+            const endTime = performance.now();
+            const executionTime = (endTime - startTime).toFixed(2);
+
+            // Display output
+            outputDisplay.textContent = output;
+
+            // Add to leaderboard
+            addToLeaderboard('Custom Code', 'N/A', 'N/A', executionTime, output);
+        }
+
+        // Function to reset the code input and output
+        function resetCode() {
+            document.getElementById('code-input').value = '';
+            document.getElementById('output-display').textContent = 'Waiting for execution...';
+        }
+
+        // Function to start app (triggered by the Start Learning button)
+        function startApp() {
+            document.getElementById('curtain').style.display = 'none'; // Hide curtain
+            document.getElementById('main-content').classList.remove('hidden'); // Show main content
+        }
+    </script>
+</body>
+</html>
